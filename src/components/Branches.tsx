@@ -1,6 +1,7 @@
 import { MapPin, Phone, MessageCircle, ExternalLink } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
 import { SITE } from '../data/site'
+import Photo from './Photo'
 
 export default function Branches() {
   const { t } = useLang()
@@ -19,6 +20,13 @@ export default function Branches() {
           <span className="rule mt-5 mb-7" aria-hidden="true" />
           <p className="body-text">{t.branches.intro}</p>
         </div>
+
+        <Photo
+          name="handling"
+          alt={t.images.handling}
+          ratio="aspect-[21/9]"
+          className="mb-10 reveal"
+        />
 
         <ul className="grid md:grid-cols-3 gap-4">
           {t.branches.items.map((branch, i) => {

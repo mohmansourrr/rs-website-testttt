@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowRight } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
+import { asset } from '../data/site'
 
 export default function Hero() {
   const { t } = useLang()
@@ -10,9 +11,26 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] flex items-center bg-ink overflow-hidden pt-24 pb-16"
+      className="relative min-h-[100svh] flex items-center bg-ink overflow-hidden pt-32 pb-16"
       aria-label={t.hero.title}
     >
+      {/* Factory photograph, dimmed to stay well behind the copy */}
+      <img
+        src={asset('images/factory-line.webp')}
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        className="absolute inset-0 h-full w-full object-cover opacity-[0.28]"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(28,26,25,0.97) 0%, rgba(28,26,25,0.88) 45%, rgba(28,26,25,0.6) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
       {/* Texture + depth */}
       <div className="absolute inset-0 hatch" aria-hidden="true" />
       <div

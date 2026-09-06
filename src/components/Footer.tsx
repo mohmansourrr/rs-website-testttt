@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
-            <Logo tone="light" className="h-9 w-auto mb-5" />
+            <Logo className="h-11 mb-5" />
             <p className="text-[13px] leading-relaxed text-muted-dark max-w-xs mb-6">
               {t.footer.tagline}
             </p>

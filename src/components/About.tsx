@@ -1,4 +1,5 @@
 import { useLang } from '../i18n/LanguageContext'
+import Photo from './Photo'
 
 export default function About() {
   const { t } = useLang()
@@ -26,6 +27,12 @@ export default function About() {
             <p className="lede mb-5">{t.about.p1}</p>
             <p className="body-text mb-5">{t.about.p2}</p>
             <p className="body-text">{t.about.p3}</p>
+
+            {/* Plant photography */}
+            <div className="grid grid-cols-2 gap-3 mt-8">
+              <Photo name="team" alt={t.images.team} ratio="aspect-[4/3]" />
+              <Photo name="plant" alt={t.images.plant} ratio="aspect-[4/3]" />
+            </div>
 
             <button type="button" onClick={() => go('#contact')} className="btn-outline mt-8">
               {t.about.cta}

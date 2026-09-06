@@ -1,5 +1,6 @@
 import { Check, Building2, CookingPot, Factory } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
+import Photo from './Photo'
 
 const APP_ICONS = [Building2, CookingPot, Factory]
 
@@ -42,6 +43,13 @@ export default function Quality() {
                 </li>
               ))}
             </ul>
+
+            <Photo
+              name="inspection"
+              alt={t.images.inspection}
+              ratio="aspect-[16/9]"
+              className="mt-8"
+            />
           </div>
 
           {/* Applications */}
