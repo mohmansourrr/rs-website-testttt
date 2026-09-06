@@ -1,5 +1,6 @@
 import { Layers, CircleDot, Minus, Triangle } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
+import Photo from './Photo'
 
 const ICONS = [Layers, CircleDot, Minus, Triangle]
 
@@ -87,21 +88,34 @@ export default function Products() {
               </ul>
             </div>
 
-            {/* Processing */}
-            <div className="bg-ink p-7">
-              <h3 className="u-display text-cream text-lg mb-1">
-                {t.products.processingTitle}
-              </h3>
-              <span className="rule mt-4 mb-5" aria-hidden="true" />
-              <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
-                {t.products.processing.map((p) => (
-                  <li key={p} className="text-cream text-sm font-bold flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 bg-rust-500 shrink-0" aria-hidden="true" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Slitting line photograph */}
+            <Photo name="slitting" alt={t.images.slitting} ratio="aspect-[16/9]" />
+          </div>
+        </div>
+
+        {/* Available processing — polishing, finishing and colouring */}
+        <div className="mt-8 grid lg:grid-cols-12 reveal">
+          <div className="lg:col-span-4">
+            <Photo
+              name="polishing"
+              alt={t.images.polishing}
+              ratio="aspect-[4/3] lg:aspect-auto lg:h-full"
+              className="h-full"
+            />
+          </div>
+          <div className="lg:col-span-8 bg-ink p-7 sm:p-9">
+            <h3 className="u-display text-cream text-lg mb-1">
+              {t.products.processingTitle}
+            </h3>
+            <span className="rule mt-4 mb-6" aria-hidden="true" />
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
+              {t.products.processing.map((p) => (
+                <li key={p} className="text-cream text-sm font-bold flex items-center gap-2.5">
+                  <span className="h-1.5 w-1.5 bg-rust-500 shrink-0" aria-hidden="true" />
+                  {p}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

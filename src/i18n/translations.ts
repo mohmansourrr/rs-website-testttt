@@ -86,7 +86,29 @@ const en = {
     gradesTitle: 'Available Grades',
     grades: ['201', '304', '304L', '309', '310', '316', '316L', '410', '430'],
     processingTitle: 'Available Processing',
-    processing: ['Cutting', 'Slitting', 'Edge Treatment', 'Custom Processing'],
+    processing: [
+      'Cutting',
+      'Slitting',
+      'Edge Treatment',
+      'Polishing (8K / 6K)',
+      'No.4',
+      'Scotch Brite',
+      'Hairline',
+      'SS Colouring',
+      'Custom Processing',
+    ],
+  },
+
+  images: {
+    factoryLine: 'RS Stainless Egypt production line with stainless steel coils',
+    team: 'The RS Stainless Egypt team at the 6th of October factory',
+    plant: 'Cut-to-length line inside the RS Stainless Egypt plant',
+    slitting: 'Stainless steel coil being slit into strips on the slitting line',
+    polishing: 'Polishing line producing 8K and 6K mirror finishes',
+    inspection: 'Technician measuring sheet thickness with a caliper',
+    operator: 'RS operator handling finished stainless steel sheets',
+    coil: 'Stainless steel coil mounted on the slitting machine',
+    handling: 'Stainless steel coil being moved in the warehouse',
   },
 
   finishes: {
@@ -313,7 +335,29 @@ const ar: Translation = {
     gradesTitle: 'الدرجات المتاحة',
     grades: ['٢٠١', '٣٠٤', '٣٠٤L', '٣٠٩', '٣١٠', '٣١٦', '٣١٦L', '٤١٠', '٤٣٠'],
     processingTitle: 'عمليات المعالجة المتاحة',
-    processing: ['التقطيع', 'القص الطولي', 'معالجة الحواف', 'المعالجة حسب الطلب'],
+    processing: [
+      'التقطيع',
+      'القص الطولي',
+      'معالجة الحواف',
+      'تلميع (8K / 6K)',
+      'صنفرة',
+      'سكوتش برايت',
+      'Hairline',
+      'تلوين الاستانلس',
+      'المعالجة حسب الطلب',
+    ],
+  },
+
+  images: {
+    factoryLine: 'خط الإنتاج في أر.أس ستانلس مصر مع لفائف الستانلس ستيل',
+    team: 'فريق أر.أس ستانلس مصر في مصنع ٦ أكتوبر',
+    plant: 'خط القص العرضي داخل مصنع أر.أس ستانلس مصر',
+    slitting: 'لفائف الستانلس ستيل أثناء القص الطولي إلى شرائح',
+    polishing: 'خط التلميع لإنتاج تشطيبات مرآة 8K و 6K',
+    inspection: 'فني يقيس سُمك اللوح باستخدام الوردية',
+    operator: 'أحد فنيي أر.أس أثناء مناولة ألواح الستانلس ستيل',
+    coil: 'لفيفة ستانلس ستيل مثبتة على ماكينة القص الطولي',
+    handling: 'مناولة لفيفة ستانلس ستيل داخل المخزن',
   },
 
   finishes: {

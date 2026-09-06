@@ -48,54 +48,37 @@ export default function Navbar() {
     }, 60)
   }
 
-  /* Solid bar once scrolled or when the mobile sheet is open */
+  /* Solid bar once scrolled or when the mobile sheet is open.
+     The official logo is a light metallic mark, so the bar stays dark
+     in every state and the lockup always reads cleanly. */
   const solid = scrolled || open
-  const tone = solid ? 'dark' : 'light'
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        solid ? 'bg-cream border-b border-ink/10' : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        solid ? 'bg-ink/95 backdrop-blur border-b border-cream/10' : 'bg-transparent'
       }`}
     >
       <nav aria-label={t.nav.home} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between gap-4 lg:h-20">
-          {/* Brand */}
+        <div className="flex h-20 items-center justify-between gap-4 lg:h-24">
+          {/* Brand — the lockup already carries the name in English and Arabic */}
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-3 shrink-0"
+            className="flex items-center shrink-0"
             aria-label={t.nav.home}
           >
-            <Logo tone={tone} className="h-8 w-auto lg:h-9" />
-            <span
-              className={`hidden sm:block text-start text-[13px] font-bold leading-tight ${
-                solid ? 'text-ink' : 'text-cream'
-              }`}
-            >
-              RS Stainless
-              <span
-                className={`block text-[10px] font-medium uppercase tracking-wider ${
-                  solid ? 'text-muted-light' : 'text-cream/70'
-                }`}
-              >
-                Egypt
-              </span>
-            </span>
+            <Logo priority className="h-12 sm:h-14 lg:h-[52px] xl:h-16" />
           </button>
 
           {/* Desktop links */}
-          <ul className="hidden lg:flex items-center gap-7">
+          <ul className="hidden lg:flex items-center gap-5 xl:gap-7">
             {links.map((l) => (
               <li key={l.href}>
                 <button
                   type="button"
                   onClick={() => go(l.href)}
-                  className={`text-[12px] font-bold uppercase tracking-wider transition-colors ${
-                    solid
-                      ? 'text-ink hover:text-rust-700'
-                      : 'text-cream hover:text-rust-300'
-                  }`}
+                  className="whitespace-nowrap text-[12px] font-bold uppercase tracking-wider text-cream hover:text-rust-300 transition-colors"
                 >
                   {l.label}
                 </button>
@@ -107,21 +90,19 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href={`tel:${PRIMARY.phoneHref}`}
-              className={`hidden xl:inline-flex items-center gap-2 text-[13px] font-semibold transition-colors ${
-                solid ? 'text-ink hover:text-rust-700' : 'text-cream hover:text-rust-300'
-              }`}
+              className="hidden 2xl:inline-flex items-center gap-2 whitespace-nowrap text-[13px] font-semibold text-cream hover:text-rust-300 transition-colors"
               dir="ltr"
             >
               <Phone size={14} aria-hidden="true" />
               {PRIMARY.phoneDisplay}
             </a>
 
-            <LanguageToggle tone={tone} />
+            <LanguageToggle tone="light" />
 
             <button
               type="button"
               onClick={() => go('#contact')}
-              className="hidden lg:inline-flex btn-primary !px-5 !py-2.5 !min-h-[44px]"
+              className="hidden lg:inline-flex btn-primary !px-5 !py-2.5 !min-h-[44px] whitespace-nowrap"
             >
               {t.nav.quote}
             </button>
@@ -130,9 +111,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setOpen((o) => !o)}
-              className={`lg:hidden inline-flex items-center justify-center h-11 w-11 border-2 transition-colors ${
-                solid ? 'border-ink/25 text-ink' : 'border-cream/30 text-cream'
-              }`}
+              className="lg:hidden inline-flex items-center justify-center h-11 w-11 border-2 border-cream/30 text-cream hover:bg-cream/10 transition-colors"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
@@ -147,7 +126,7 @@ export default function Navbar() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="lg:hidden bg-cream border-t border-ink/10"
+        className="lg:hidden bg-ink border-t border-cream/10"
       >
         <ul className="px-4 sm:px-6 py-3">
           {links.map((l) => (
@@ -155,7 +134,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => go(l.href)}
-                className="w-full text-start py-4 text-sm font-bold uppercase tracking-wider text-ink border-b border-ink/10"
+                className="w-full text-start py-4 text-sm font-bold uppercase tracking-wider text-cream border-b border-cream/10"
               >
                 {l.label}
               </button>
@@ -165,7 +144,7 @@ export default function Navbar() {
         <div className="px-4 sm:px-6 pb-6 flex flex-col gap-3">
           <a
             href={`tel:${PRIMARY.phoneHref}`}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-ink"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-cream"
             dir="ltr"
           >
             <Phone size={15} aria-hidden="true" />
