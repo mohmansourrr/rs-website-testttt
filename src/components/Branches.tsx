@@ -1,143 +1,124 @@
 import { MapPin, Phone, MessageCircle, ExternalLink } from 'lucide-react'
-
-interface Branch {
-  name: string
-  city: string
-  address: string
-  phone: string
-  whatsapp: string
-  mapsQuery: string
-  primary?: boolean
-}
-
-const BRANCHES: Branch[] = [
-  {
-    name: 'El Sabtya',
-    city: 'Cairo',
-    address: '1 Rabaa El Roz St., Souk El Asr, El Sabtya, Cairo, Egypt',
-    phone: '+2 010 250 09288',
-    whatsapp: '201025009288',
-    mapsQuery: 'El+Sabtya+Cairo+Egypt',
-    primary: true,
-  },
-  {
-    name: 'Qalyoub',
-    city: 'Cairo – North',
-    address: 'The Slow Road, In front of El Belbasi, Abo Senna, Qalyoub, Cairo, Egypt',
-    phone: '+2 010 957 97888',
-    whatsapp: '201095797888',
-    mapsQuery: 'Qalyoub+Cairo+Egypt',
-  },
-  {
-    name: '6th of October',
-    city: 'Giza',
-    address: 'Piece 175 Industrial Sixth Extension (opp. El-Sharqia for Smoking & Marakbi Factory), Giza, Egypt',
-    phone: '+2 010 071 84005',
-    whatsapp: '201007184005',
-    mapsQuery: '6th+of+October+City+Giza+Egypt',
-  },
-]
+import { useLang } from '../i18n/LanguageContext'
+import { SITE } from '../data/site'
 
 export default function Branches() {
+  const { t } = useLang()
+
   return (
-    <section
-      id="branches"
-      className="relative bg-black py-24 lg:py-32"
-      aria-labelledby="branches-heading"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
-        <div className="mb-16 animate-on-scroll">
-          <span className="section-label">
-            <span className="w-6 h-px bg-silver/50" aria-hidden="true" />
-            Find Us
-          </span>
-          <h2 id="branches-heading" className="section-heading mt-3">
-            Our <span className="silver-text">Branches</span>
-          </h2>
-          <p className="mt-4 text-zinc-500 text-sm max-w-xl">
-            Three strategically located service centres across Greater Cairo and Giza — stocked and ready.
+    <section id="branches" className="bg-cream py-20 lg:py-28" aria-labelledby="branches-h">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="reveal mb-12 max-w-2xl">
+          <p className="section-label mb-3">
+            <span className="h-px w-8 bg-rust-500" aria-hidden="true" />
+            {t.branches.label}
           </p>
+          <h2 id="branches-h" className="section-heading">
+            {t.branches.heading}
+          </h2>
+          <span className="rule mt-5 mb-7" aria-hidden="true" />
+          <p className="body-text">{t.branches.intro}</p>
         </div>
 
-        {/* Branch cards */}
-        <div className="grid md:grid-cols-3 gap-4 animate-on-scroll delay-1" role="list" aria-label="Branch locations">
-          {BRANCHES.map((branch) => (
-            <article
-              key={branch.name}
-              role="listitem"
-              className={`relative flex flex-col card p-6 lg:p-8 group ${
-                branch.primary ? 'border-silver/20' : ''
-              }`}
-              aria-label={`${branch.name} branch in ${branch.city}`}
-            >
-              {branch.primary && (
-                <span className="absolute top-4 right-4 text-[9px] text-silver border border-silver/30 px-2 py-0.5 uppercase tracking-widest">
-                  Main Branch
-                </span>
-              )}
+        <ul className="grid md:grid-cols-3 gap-4">
+          {t.branches.items.map((branch, i) => {
+            const info = SITE.branches[i]
+            const isMain = i === 0
+            return (
+              <li
+                key={branch.name}
+                className={`relative flex flex-col p-7 border-2 reveal reveal-d${i + 1} ${
+                  isMain
+                    ? 'bg-ink border-ink'
+                    : 'bg-cream-100 border-ink/10 hover:border-rust-500 transition-colors'
+                }`}
+              >
+                {isMain && (
+                  <span className="inline-block self-start bg-rust-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 mb-5">
+                    {t.branches.mainBadge}
+                  </span>
+                )}
 
-              {/* Branch name */}
-              <div className="mb-6">
-                <p className="text-[10px] text-zinc-600 uppercase tracking-widest mb-1">{branch.city}</p>
-                <h3 className="font-heading text-3xl text-white uppercase tracking-wide">{branch.name}</h3>
-              </div>
-
-              {/* Address */}
-              <div className="flex gap-3 mb-6 flex-1">
-                <MapPin
-                  size={14}
-                  className="text-silver flex-shrink-0 mt-0.5"
-                  aria-hidden="true"
-                />
-                <address className="not-italic text-zinc-400 text-sm leading-relaxed">{branch.address}</address>
-              </div>
-
-              {/* Contact */}
-              <div className="space-y-3 mb-6">
-                <a
-                  href={`tel:${branch.phone.replace(/\s/g, '')}`}
-                  className="flex items-center gap-2.5 text-sm text-zinc-300 hover:text-white transition-colors group/link"
-                  aria-label={`Call ${branch.name} branch: ${branch.phone}`}
+                <p
+                  className={`text-[11px] font-bold uppercase tracking-wider mb-1 ${
+                    isMain ? 'text-rust-400' : 'text-rust-700'
+                  }`}
                 >
-                  <Phone size={13} className="text-silver" aria-hidden="true" />
-                  <span>{branch.phone}</span>
-                </a>
-              </div>
-
-              {/* Actions */}
-              <div className="flex gap-3 mt-auto">
-                <a
-                  href={`https://wa.me/${branch.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 flex-1 justify-center border border-white/10 hover:border-silver/30 text-zinc-300 hover:text-white text-xs uppercase tracking-widest py-2.5 transition-all"
-                  aria-label={`WhatsApp ${branch.name} branch`}
+                  {branch.city}
+                </p>
+                <h3
+                  className={`u-display text-2xl mb-5 ${isMain ? 'text-cream' : 'text-ink'}`}
                 >
-                  <MessageCircle size={12} aria-hidden="true" />
-                  WhatsApp
-                </a>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${branch.mapsQuery}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 flex-1 justify-center border border-white/10 hover:border-silver/30 text-zinc-300 hover:text-white text-xs uppercase tracking-widest py-2.5 transition-all"
-                  aria-label={`View ${branch.name} branch on Google Maps`}
-                >
-                  <ExternalLink size={12} aria-hidden="true" />
-                  Directions
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
+                  {branch.name}
+                </h3>
 
-        {/* Note */}
-        <p className="mt-8 text-center text-xs text-zinc-700 animate-on-scroll delay-2">
-          All branches are stocked with the full product range. Call ahead to confirm specific grades.
+                <div className="flex gap-3 mb-5 flex-1">
+                  <MapPin
+                    size={15}
+                    className={`shrink-0 mt-0.5 ${isMain ? 'text-rust-400' : 'text-rust-600'}`}
+                    aria-hidden="true"
+                  />
+                  <address
+                    className={`not-italic text-[14px] leading-relaxed ${
+                      isMain ? 'text-muted-dark' : 'text-muted-light'
+                    }`}
+                  >
+                    {branch.address}
+                  </address>
+                </div>
+
+                <a
+                  href={`tel:${info.phoneHref}`}
+                  dir="ltr"
+                  className={`inline-flex items-center gap-2.5 text-[15px] font-bold mb-5 transition-colors ${
+                    isMain ? 'text-cream hover:text-rust-400' : 'text-ink hover:text-rust-700'
+                  }`}
+                  aria-label={`${t.branches.callAria} ${branch.name}: ${info.phoneDisplay}`}
+                >
+                  <Phone
+                    size={14}
+                    className={isMain ? 'text-rust-400' : 'text-rust-600'}
+                    aria-hidden="true"
+                  />
+                  {info.phoneDisplay}
+                </a>
+
+                <div className="grid grid-cols-2 gap-2 mt-auto">
+                  <a
+                    href={`https://wa.me/${info.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center justify-center gap-1.5 border-2 py-2.5 text-[11px] font-bold uppercase tracking-wider transition-colors min-h-[44px] ${
+                      isMain
+                        ? 'border-cream/30 text-cream hover:bg-cream hover:text-ink'
+                        : 'border-ink/20 text-ink hover:bg-ink hover:text-cream'
+                    }`}
+                  >
+                    <MessageCircle size={13} aria-hidden="true" />
+                    {t.branches.whatsapp}
+                  </a>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${info.maps}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center justify-center gap-1.5 border-2 py-2.5 text-[11px] font-bold uppercase tracking-wider transition-colors min-h-[44px] ${
+                      isMain
+                        ? 'border-cream/30 text-cream hover:bg-cream hover:text-ink'
+                        : 'border-ink/20 text-ink hover:bg-ink hover:text-cream'
+                    }`}
+                  >
+                    <ExternalLink size={13} aria-hidden="true" />
+                    {t.branches.directions}
+                  </a>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+
+        <p className="mt-8 text-center text-[13px] text-muted-light reveal">
+          {t.branches.note}
         </p>
-
       </div>
     </section>
   )

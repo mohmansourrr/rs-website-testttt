@@ -1,14 +1,7 @@
-import { useState, type FormEvent } from 'react'
-import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react'
-
-const PRODUCT_OPTIONS = [
-  'Stainless Steel Sheets & Coil',
-  'Stainless Steel Bars & Angle',
-  'Stainless Steel Tubes & Pipes',
-  'Decorative Stainless Steel',
-  'Multiple Products',
-  'Other / Not Sure',
-]
+import { useState, type FormEvent, type ChangeEvent } from 'react'
+import { Send, CheckCircle2, Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { useLang } from '../i18n/LanguageContext'
+import { SITE, PRIMARY } from '../data/site'
 
 interface FormState {
   name: string
@@ -19,298 +12,275 @@ interface FormState {
   message: string
 }
 
-const INITIAL: FormState = { name: '', company: '', email: '', phone: '', product: '', message: '' }
-
-const INPUT_CLS =
-  'w-full bg-zinc-900 border border-white/[0.08] text-white text-sm px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-silver/40 transition-colors'
-
-const LABEL_CLS = 'block text-[10px] text-zinc-500 uppercase tracking-widest mb-1.5'
+const EMPTY: FormState = { name: '', company: '', email: '', phone: '', product: '', message: '' }
 
 export default function Contact() {
-  const [form, setForm] = useState<FormState>(INITIAL)
-  const [submitted, setSubmitted] = useState(false)
+  const { t } = useLang()
+  const [form, setForm] = useState<FormState>(EMPTY)
   const [sending, setSending] = useState(false)
+  const [sent, setSent] = useState(false)
 
-  const set = (field: keyof FormState) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => setForm((f) => ({ ...f, [field]: e.target.value }))
+  const bind =
+    (field: keyof FormState) =>
+    (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+      setForm((f) => ({ ...f, [field]: e.target.value }))
 
-  const handleSubmit = (e: FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault()
     setSending(true)
-    /* Replace this with your actual form submission (EmailJS, Formspree, etc.) */
-    setTimeout(() => {
+    /* TODO: connect to an email service (EmailJS / Formspree) or a backend endpoint. */
+    window.setTimeout(() => {
       setSending(false)
-      setSubmitted(true)
-      setForm(INITIAL)
-    }, 1200)
+      setSent(true)
+      setForm(EMPTY)
+    }, 900)
   }
 
   return (
-    <section
-      id="contact"
-      className="relative bg-zinc-950 py-24 lg:py-32"
-      aria-labelledby="contact-heading"
-    >
-      <div className="absolute top-0 left-0 right-0 silver-line" aria-hidden="true" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
-        <div className="mb-16 animate-on-scroll">
-          <span className="section-label">
-            <span className="w-6 h-px bg-silver/50" aria-hidden="true" />
-            Get in Touch
-          </span>
-          <h2 id="contact-heading" className="section-heading mt-3">
-            Request a <span className="silver-text">Quote</span>
-          </h2>
-          <p className="mt-4 text-zinc-500 text-sm max-w-xl">
-            Tell us about your project and our team will respond within one business day with pricing and availability.
+    <section id="contact" className="bg-cream-200 py-20 lg:py-28" aria-labelledby="contact-h">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="reveal mb-12 max-w-2xl">
+          <p className="section-label mb-3">
+            <span className="h-px w-8 bg-rust-500" aria-hidden="true" />
+            {t.contact.label}
           </p>
+          <h2 id="contact-h" className="section-heading">
+            {t.contact.heading}
+          </h2>
+          <span className="rule mt-5 mb-7" aria-hidden="true" />
+          <p className="body-text">{t.contact.intro}</p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 animate-on-scroll delay-1">
-
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
           {/* Form */}
-          <div className="lg:col-span-3">
-            {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-16 gap-4 border border-silver/20 card">
-                <CheckCircle size={40} className="text-silver" aria-hidden="true" />
-                <h3 className="text-white font-semibold text-lg">Message Received!</h3>
-                <p className="text-zinc-500 text-sm max-w-xs">
-                  Thank you for reaching out. A member of our team will contact you within one business day.
-                </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="btn-ghost mt-4"
-                >
-                  Send Another
+          <div className="lg:col-span-7 reveal">
+            {sent ? (
+              <div
+                className="bg-cream-100 border-2 border-rust-500 p-10 text-center flex flex-col items-center gap-4"
+                role="status"
+                aria-live="polite"
+              >
+                <CheckCircle2 size={40} className="text-rust-600" aria-hidden="true" />
+                <h3 className="u-display text-ink text-2xl">{t.contact.successTitle}</h3>
+                <p className="body-text max-w-sm">{t.contact.successText}</p>
+                <button type="button" onClick={() => setSent(false)} className="btn-outline mt-2">
+                  {t.contact.successAgain}
                 </button>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                aria-label="Contact and quote request form"
-                className="space-y-5"
-              >
+              <form onSubmit={onSubmit} className="flex flex-col gap-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className={LABEL_CLS}>Full Name *</label>
+                    <label htmlFor="c-name" className="field-label">
+                      {t.contact.name} <span className="text-rust-700">*</span>
+                    </label>
                     <input
-                      id="name"
+                      id="c-name"
+                      name="name"
                       type="text"
-                      value={form.name}
-                      onChange={set('name')}
                       required
                       autoComplete="name"
-                      placeholder="Your full name"
-                      className={INPUT_CLS}
-                      aria-required="true"
+                      value={form.name}
+                      onChange={bind('name')}
+                      placeholder={t.contact.namePlaceholder}
+                      className="field"
                     />
                   </div>
                   <div>
-                    <label htmlFor="company" className={LABEL_CLS}>Company</label>
+                    <label htmlFor="c-company" className="field-label">
+                      {t.contact.company}
+                    </label>
                     <input
-                      id="company"
+                      id="c-company"
+                      name="company"
                       type="text"
-                      value={form.company}
-                      onChange={set('company')}
                       autoComplete="organization"
-                      placeholder="Company or project name"
-                      className={INPUT_CLS}
+                      value={form.company}
+                      onChange={bind('company')}
+                      placeholder={t.contact.companyPlaceholder}
+                      className="field"
                     />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="email" className={LABEL_CLS}>Email Address *</label>
+                    <label htmlFor="c-email" className="field-label">
+                      {t.contact.email} <span className="text-rust-700">*</span>
+                    </label>
                     <input
-                      id="email"
+                      id="c-email"
+                      name="email"
                       type="email"
-                      value={form.email}
-                      onChange={set('email')}
                       required
                       autoComplete="email"
-                      placeholder="you@company.com"
-                      className={INPUT_CLS}
-                      aria-required="true"
+                      value={form.email}
+                      onChange={bind('email')}
+                      placeholder={t.contact.emailPlaceholder}
+                      className="field"
+                      dir="ltr"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className={LABEL_CLS}>Phone / WhatsApp *</label>
+                    <label htmlFor="c-phone" className="field-label">
+                      {t.contact.phone} <span className="text-rust-700">*</span>
+                    </label>
                     <input
-                      id="phone"
+                      id="c-phone"
+                      name="phone"
                       type="tel"
-                      value={form.phone}
-                      onChange={set('phone')}
                       required
                       autoComplete="tel"
-                      placeholder="+20 1xx xxx xxxx"
-                      className={INPUT_CLS}
-                      aria-required="true"
+                      value={form.phone}
+                      onChange={bind('phone')}
+                      placeholder={t.contact.phonePlaceholder}
+                      className="field"
+                      dir="ltr"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="product" className={LABEL_CLS}>Product Interest</label>
+                  <label htmlFor="c-product" className="field-label">
+                    {t.contact.product}
+                  </label>
                   <select
-                    id="product"
+                    id="c-product"
+                    name="product"
                     value={form.product}
-                    onChange={set('product')}
-                    className={`${INPUT_CLS} appearance-none cursor-pointer`}
+                    onChange={bind('product')}
+                    className="field"
                   >
-                    <option value="">Select a product category</option>
-                    {PRODUCT_OPTIONS.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
+                    <option value="">{t.contact.productPlaceholder}</option>
+                    {t.contact.productOptions.map((o) => (
+                      <option key={o} value={o}>
+                        {o}
+                      </option>
                     ))}
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className={LABEL_CLS}>
-                    Project Details / Specifications *
+                  <label htmlFor="c-message" className="field-label">
+                    {t.contact.message} <span className="text-rust-700">*</span>
                   </label>
                   <textarea
-                    id="message"
-                    value={form.message}
-                    onChange={set('message')}
+                    id="c-message"
+                    name="message"
                     required
                     rows={5}
-                    placeholder="Describe your requirements: grade, thickness, size, quantity, finish…"
-                    className={`${INPUT_CLS} resize-none`}
-                    aria-required="true"
+                    value={form.message}
+                    onChange={bind('message')}
+                    placeholder={t.contact.messagePlaceholder}
+                    className="field resize-y"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={sending}
-                  className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
                   aria-busy={sending}
+                  className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {sending ? (
                     <>
-                      <span className="w-3 h-3 border border-black/40 border-t-black rounded-full animate-spin" aria-hidden="true" />
-                      Sending…
+                      <span
+                        className="h-3.5 w-3.5 rounded-full border-2 border-white/40 border-t-white animate-spin"
+                        aria-hidden="true"
+                      />
+                      {t.contact.sending}
                     </>
                   ) : (
                     <>
-                      <Send size={13} aria-hidden="true" />
-                      Send Request
+                      <Send size={14} aria-hidden="true" />
+                      {t.contact.submit}
                     </>
                   )}
                 </button>
 
-                <p className="text-[11px] text-zinc-700 text-center">
-                  We respond within 1 business day · All enquiries treated in confidence
+                <p className="text-[12px] text-muted-light text-center">
+                  {t.contact.disclaimer}
                 </p>
               </form>
             )}
           </div>
 
-          {/* Contact info sidebar */}
-          <aside className="lg:col-span-2 space-y-6" aria-label="Contact information">
-
-            {/* Quick contact */}
-            <div className="card p-6 space-y-5">
-              <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Quick Contact</p>
-
-              <div className="space-y-4">
-                <div className="flex gap-3">
-                  <Phone size={14} className="text-silver flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <div>
-                    <p className="text-[10px] text-zinc-600 uppercase tracking-wider mb-1">El Sabtya (Main)</p>
-                    <a
-                      href="tel:+201025009288"
-                      className="text-zinc-300 hover:text-white text-sm transition-colors"
-                    >
-                      +20 102 500 9288
-                    </a>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <Phone size={14} className="text-silver flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <div>
-                    <p className="text-[10px] text-zinc-600 uppercase tracking-wider mb-1">Qalyoub</p>
-                    <a
-                      href="tel:+201095797888"
-                      className="text-zinc-300 hover:text-white text-sm transition-colors"
-                    >
-                      +20 109 579 7888
-                    </a>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <Phone size={14} className="text-silver flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <div>
-                    <p className="text-[10px] text-zinc-600 uppercase tracking-wider mb-1">6th of October</p>
-                    <a
-                      href="tel:+201007184005"
-                      className="text-zinc-300 hover:text-white text-sm transition-colors"
-                    >
-                      +20 100 718 4005
-                    </a>
-                  </div>
-                </div>
-              </div>
+          {/* Sidebar */}
+          <aside className="lg:col-span-5 flex flex-col gap-4 reveal reveal-d2">
+            <div className="bg-ink p-7">
+              <h3 className="u-display text-cream text-lg mb-1">{t.contact.quickContact}</h3>
+              <span className="rule mt-4 mb-6" aria-hidden="true" />
+              <ul className="flex flex-col gap-4">
+                {t.branches.items.map((b, i) => (
+                  <li key={b.name} className="flex gap-3">
+                    <Phone size={14} className="text-rust-400 shrink-0 mt-1" aria-hidden="true" />
+                    <div>
+                      <p className="text-[11px] uppercase tracking-wider text-muted-dark mb-0.5">
+                        {b.name}
+                      </p>
+                      <a
+                        href={`tel:${SITE.branches[i].phoneHref}`}
+                        dir="ltr"
+                        className="text-cream font-bold text-[15px] hover:text-rust-400 transition-colors"
+                      >
+                        {SITE.branches[i].phoneDisplay}
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/201025009288"
+              href={`https://wa.me/${PRIMARY.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 card p-5 hover:border-silver/30 transition-all group"
-              aria-label="Chat with us on WhatsApp – opens in new tab"
+              className="flex items-center gap-4 bg-rust-600 p-6 hover:bg-rust-700 transition-colors"
             >
-              <div className="w-10 h-10 bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-700 transition-colors flex-shrink-0">
-                <MessageCircle size={18} className="text-silver" aria-hidden="true" />
-              </div>
-              <div>
-                <p className="text-white text-sm font-medium">Chat on WhatsApp</p>
-                <p className="text-zinc-500 text-xs">Available 7 days a week</p>
-              </div>
+              <span
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center bg-white/15"
+                aria-hidden="true"
+              >
+                <MessageCircle size={20} className="text-white" />
+              </span>
+              <span>
+                <span className="block text-white font-bold text-[15px]">
+                  {t.contact.whatsappTitle}
+                </span>
+                <span className="block text-white/85 text-[13px]">{t.contact.whatsappText}</span>
+              </span>
             </a>
 
-            {/* Address */}
-            <div className="card p-6">
-              <div className="flex gap-3">
-                <MapPin size={14} className="text-silver flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <p className="text-[10px] text-zinc-600 uppercase tracking-wider mb-1">Main Office</p>
-                  <address className="not-italic text-zinc-400 text-sm leading-relaxed">
-                    1 Rabaa El Roz St., Souk El Asr<br />
-                    El Sabtya, Cairo, Egypt
-                  </address>
-                </div>
+            <div className="bg-cream-100 border-2 border-ink/10 p-6 flex gap-3">
+              <MapPin size={15} className="text-rust-600 shrink-0 mt-0.5" aria-hidden="true" />
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-muted-light mb-1">
+                  {t.contact.officeTitle}
+                </p>
+                <address className="not-italic text-[14px] leading-relaxed text-ink">
+                  {t.branches.items[0].address}
+                </address>
               </div>
             </div>
 
-            {/* Email */}
-            <div className="card p-6">
-              <div className="flex gap-3">
-                <Mail size={14} className="text-silver flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <p className="text-[10px] text-zinc-600 uppercase tracking-wider mb-1">Email</p>
-                  <a
-                    href="mailto:info@rsstainless.com"
-                    className="text-zinc-300 hover:text-white text-sm transition-colors"
-                  >
-                    info@rsstainless.com
-                  </a>
-                </div>
+            <div className="bg-cream-100 border-2 border-ink/10 p-6 flex gap-3">
+              <Mail size={15} className="text-rust-600 shrink-0 mt-0.5" aria-hidden="true" />
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-muted-light mb-1">
+                  {t.contact.emailTitle}
+                </p>
+                <a
+                  href={`mailto:${SITE.email}`}
+                  dir="ltr"
+                  className="text-[14px] text-ink font-semibold hover:text-rust-700 transition-colors break-all"
+                >
+                  {SITE.email}
+                </a>
               </div>
             </div>
-
           </aside>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 silver-line" aria-hidden="true" />
     </section>
   )
 }
