@@ -1,7 +1,7 @@
 /** Contact details and links shared across the site (language-independent). */
 
 export const SITE = {
-  email: 'info@rsstainlessegypt.com',
+  email: 'info@rsstainless.com',
   /** Branch order matches translations.branches.items */
   branches: [
     {
