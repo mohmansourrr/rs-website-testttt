@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 48" role="img" aria-label="RS">
+  <defs>
+    <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#DCD7D0"/>
+      <stop offset="55%" stop-color="#B8B2AA"/>
+      <stop offset="100%" stop-color="#F4EFE7"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="38" font-family="Inter, Arial Black, sans-serif" font-size="44"
+        font-weight="900" letter-spacing="-2" fill="url(#steel)">RS</text>
+  <rect x="76" y="6" width="2" height="34" fill="#BE5A32"/>
+</svg>
