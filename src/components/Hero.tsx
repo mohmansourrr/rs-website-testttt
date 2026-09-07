@@ -52,7 +52,8 @@ export default function Hero() {
             {t.hero.eyebrow}
           </p>
 
-          <h1 className="u-display text-cream text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.2rem] mb-6">
+          {/* Sized for the full company name, which runs longer than a short mark */}
+          <h1 className="u-display text-cream text-[2.1rem] leading-[1.04] sm:text-5xl lg:text-6xl xl:text-[4.4rem] mb-6">
             {t.hero.title}
           </h1>
 

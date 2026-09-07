@@ -135,7 +135,7 @@ export default function Footer() {
       <div className="border-t border-cream/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[12px] text-muted-dark text-center">
-            © {year} RS Stainless Egypt. {t.footer.rights}
+            © {year} RS for Stainless Industrial Co. {t.footer.rights}
           </p>
           <p className="text-[11px] font-bold uppercase tracking-wider text-rust-400 text-center">
             {t.footer.strap}

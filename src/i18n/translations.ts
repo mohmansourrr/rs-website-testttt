@@ -1,6 +1,6 @@
 /**
  * All site copy, English + Arabic.
- * Content is taken directly from the RS Stainless Egypt bilingual brochure.
+ * Content is taken directly from the RS for Stainless Industrial Co. bilingual brochure.
  */
 
 type Dir = 'ltr' | 'rtl'
@@ -28,7 +28,7 @@ const en = {
 
   hero: {
     eyebrow: 'Est. 2007',
-    title: 'RS Stainless Egypt',
+    title: 'RS for Stainless Industrial Co.',
     subtitle: "Egypt's Full-Service Stainless Steel Centre",
     tagline: 'Stainless Steel Processed to Precision.',
     intro:
@@ -39,7 +39,7 @@ const en = {
   },
 
   stats: {
-    label: 'RS Stainless Egypt at a glance',
+    label: 'RS for Stainless Industrial Co. at a glance',
     items: [
       { value: '8', label: 'Product Lines' },
       { value: '9+', label: 'Steel Grades' },
@@ -51,9 +51,9 @@ const en = {
   about: {
     label: 'Who We Are',
     heading: 'About Us',
-    p1: 'RS Stainless Egypt is a stainless steel processing and service center based in Egypt, specializing in the processing, finishing, and supply of stainless steel.',
+    p1: 'RS for Stainless Industrial Co. is a stainless steel processing and service center based in Egypt, specializing in the processing, finishing, and supply of stainless steel.',
     p2: 'We provide stainless steel sheets, coils, pipes, bars, tubes, and angles for manufacturers, fabricators, contractors, distributors, and industrial buyers.',
-    p3: 'Founded in 2007, RS Stainless Egypt has grown into a team of 100+ specialists across three branches in the Greater Cairo region. Our focus is on delivering consistent dimensions, surface finishes, and material quality — helping our customers receive the right product, ready for their specific application.',
+    p3: 'Founded in 2007, RS for Stainless Industrial Co. has grown into a team of 100+ specialists across three branches in the Greater Cairo region. Our focus is on delivering consistent dimensions, surface finishes, and material quality — helping our customers receive the right product, ready for their specific application.',
     servicesTitle: 'Our Core Services',
     services: ['Cutting', 'Slitting', 'Polishing', 'Finishing', 'Supply'],
     cta: 'Work With Us',
@@ -151,9 +151,9 @@ const en = {
   },
 
   images: {
-    factoryLine: 'RS Stainless Egypt production line with stainless steel coils',
-    team: 'The RS Stainless Egypt team at the 6th of October factory',
-    plant: 'Cut-to-length line inside the RS Stainless Egypt plant',
+    factoryLine: 'RS for Stainless Industrial Co. production line with stainless steel coils',
+    team: 'The RS team at the 6th of October factory',
+    plant: 'Cut-to-length line inside the RS plant',
     slitting: 'Stainless steel coil being slit into strips on the slitting line',
     polishing: 'Polishing line producing 8K and 6K mirror finishes',
     inspection: 'Technician measuring sheet thickness with a caliper',
@@ -328,7 +328,7 @@ const ar: Translation = {
 
   hero: {
     eyebrow: 'تأسست ٢٠٠٧',
-    title: 'أر.أس لصناعة الستانلس',
+    title: 'أر.أس لصناعه الاستانلس',
     subtitle: 'مركز مصر لخدمات الستانلس ستيل',
     tagline: 'الستانلس ستيل مُعالج بدقة.',
     intro:
@@ -339,7 +339,7 @@ const ar: Translation = {
   },
 
   stats: {
-    label: 'أر.أس ستانلس مصر في لمحة',
+    label: 'أر.أس لصناعه الاستانلس في لمحة',
     items: [
       { value: '٨', label: 'خطوط إنتاج' },
       { value: '+٩', label: 'درجات الستانلس' },
@@ -351,9 +351,9 @@ const ar: Translation = {
   about: {
     label: 'من نحن',
     heading: 'من نحن',
-    p1: 'أر.أس ستانلس مصر هو مركز متخصص في معالجة وتجهيز وتوريد الستانلس ستيل في مصر، حيث نختص في عمليات المعالجة، والتشطيب، والتوريد لمختلف الاستخدامات.',
+    p1: 'أر.أس لصناعه الاستانلس هو مركز متخصص في معالجة وتجهيز وتوريد الستانلس ستيل في مصر، حيث نختص في عمليات المعالجة، والتشطيب، والتوريد لمختلف الاستخدامات.',
     p2: 'نوفر ألواح ولفائف الستانلس ستيل، والمواسير، والقضبان، والأنابيب، والزوايا، لخدمة المصنّعين، والمقاولين، وشركات التصنيع، والموزعين، والمشترين في القطاع الصناعي.',
-    p3: 'تأسست أر.أس ستانلس مصر عام ٢٠٠٧، ونمت لتصبح فريقًا يضم أكثر من ١٠٠ متخصص موزعين على ثلاثة فروع في منطقة القاهرة الكبرى. نركز على تقديم منتجات تتميز بثبات الأبعاد، وجودة الأسطح، وجودة الخامات، بما يضمن حصول عملائنا على المنتج المناسب والجاهز للاستخدام وفقًا لمتطلبات كل تطبيق.',
+    p3: 'تأسست أر.أس لصناعه الاستانلس عام ٢٠٠٧، ونمت لتصبح فريقًا يضم أكثر من ١٠٠ متخصص موزعين على ثلاثة فروع في منطقة القاهرة الكبرى. نركز على تقديم منتجات تتميز بثبات الأبعاد، وجودة الأسطح، وجودة الخامات، بما يضمن حصول عملائنا على المنتج المناسب والجاهز للاستخدام وفقًا لمتطلبات كل تطبيق.',
     servicesTitle: 'خدماتنا الأساسية',
     services: ['التقطيع', 'القص الطولي', 'التلميع', 'التشطيب', 'التوريد'],
     cta: 'تعاون معنا',
@@ -451,9 +451,9 @@ const ar: Translation = {
   },
 
   images: {
-    factoryLine: 'خط الإنتاج في أر.أس ستانلس مصر مع لفائف الستانلس ستيل',
-    team: 'فريق أر.أس ستانلس مصر في مصنع ٦ أكتوبر',
-    plant: 'خط القص العرضي داخل مصنع أر.أس ستانلس مصر',
+    factoryLine: 'خط الإنتاج في أر.أس لصناعه الاستانلس مع لفائف الستانلس ستيل',
+    team: 'فريق أر.أس في مصنع ٦ أكتوبر',
+    plant: 'خط القص العرضي داخل مصنع أر.أس',
     slitting: 'لفائف الستانلس ستيل أثناء القص الطولي إلى شرائح',
     polishing: 'خط التلميع لإنتاج تشطيبات مرآة 8K و 6K',
     inspection: 'فني يقيس سُمك اللوح باستخدام الوردية',
