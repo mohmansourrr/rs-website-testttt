@@ -47,6 +47,8 @@ export default function Quality() {
             <Photo
               name="inspection"
               alt={t.images.inspection}
+              caption={t.captions.inspection}
+              tone="dark"
               ratio="aspect-[16/9]"
               className="mt-8"
             />

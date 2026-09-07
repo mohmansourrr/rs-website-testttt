@@ -29,9 +29,19 @@ export default function About() {
             <p className="body-text">{t.about.p3}</p>
 
             {/* Plant photography */}
-            <div className="grid grid-cols-2 gap-3 mt-8">
-              <Photo name="team" alt={t.images.team} ratio="aspect-[4/3]" />
-              <Photo name="plant" alt={t.images.plant} ratio="aspect-[4/3]" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
+              <Photo
+                name="team"
+                alt={t.images.team}
+                caption={t.captions.team}
+                ratio="aspect-[4/3]"
+              />
+              <Photo
+                name="plant"
+                alt={t.images.plant}
+                caption={t.captions.plant}
+                ratio="aspect-[4/3]"
+              />
             </div>
 
             <button type="button" onClick={() => go('#contact')} className="btn-outline mt-8">

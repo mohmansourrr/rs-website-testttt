@@ -1,5 +1,4 @@
 import { useLang } from '../i18n/LanguageContext'
-import Photo from './Photo'
 
 export default function WhyChooseUs() {
   const { t } = useLang()
@@ -20,13 +19,6 @@ export default function WhyChooseUs() {
           </h2>
           <span className="rule mt-5" aria-hidden="true" />
         </div>
-
-        <Photo
-          name="operator"
-          alt={t.images.operator}
-          ratio="aspect-[21/9]"
-          className="mb-12 reveal"
-        />
 
         {/* Numbered list, mirroring the brochure's 1–6 layout */}
         <ol className="grid md:grid-cols-2 gap-x-10 gap-y-1">
