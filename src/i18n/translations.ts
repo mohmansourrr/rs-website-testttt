@@ -99,6 +99,18 @@ const en = {
     ],
   },
 
+  topbar: {
+    tagline: 'Cutting · Slitting · Polishing · Finishing · Supply',
+  },
+
+  captions: {
+    team: 'Our team at the 6th of October factory',
+    plant: 'Cut-to-length line, 6th of October',
+    slitting: 'Coil slitting to customer width',
+    polishing: 'Polishing line — 8K and 6K mirror finishes',
+    inspection: 'Thickness verified on every production run',
+  },
+
   images: {
     factoryLine: 'RS Stainless Egypt production line with stainless steel coils',
     team: 'The RS Stainless Egypt team at the 6th of October factory',
@@ -346,6 +358,18 @@ const ar: Translation = {
       'تلوين الاستانلس',
       'المعالجة حسب الطلب',
     ],
+  },
+
+  topbar: {
+    tagline: 'التقطيع · القص الطولي · التلميع · التشطيب · التوريد',
+  },
+
+  captions: {
+    team: 'فريقنا في مصنع ٦ أكتوبر',
+    plant: 'خط القص العرضي، ٦ أكتوبر',
+    slitting: 'القص الطولي للفائف حسب عرض العميل',
+    polishing: 'خط التلميع — تشطيبات مرآة 8K و 6K',
+    inspection: 'التحقق من السُمك في كل تشغيلة إنتاج',
   },
 
   images: {

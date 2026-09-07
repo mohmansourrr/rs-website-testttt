@@ -89,7 +89,12 @@ export default function Products() {
             </div>
 
             {/* Slitting line photograph */}
-            <Photo name="slitting" alt={t.images.slitting} ratio="aspect-[16/9]" />
+            <Photo
+              name="slitting"
+              alt={t.images.slitting}
+              caption={t.captions.slitting}
+              ratio="aspect-[16/9]"
+            />
           </div>
         </div>
 
@@ -99,6 +104,8 @@ export default function Products() {
             <Photo
               name="polishing"
               alt={t.images.polishing}
+              caption={t.captions.polishing}
+              captionStyle="overlay"
               ratio="aspect-[4/3] lg:aspect-auto lg:h-full"
               className="h-full"
             />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, Mail, MessageCircle } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
-import { PRIMARY } from '../data/site'
+import { PRIMARY, SITE } from '../data/site'
 import Logo from './Logo'
 import LanguageToggle from './LanguageToggle'
 
@@ -17,6 +17,7 @@ export default function Navbar() {
     { label: t.nav.quality, href: '#quality' },
     { label: t.nav.whyUs, href: '#why-us' },
     { label: t.nav.branches, href: '#branches' },
+    { label: t.nav.contact, href: '#contact' },
   ]
 
   useEffect(() => {
@@ -59,6 +60,47 @@ export default function Navbar() {
         solid ? 'bg-ink/95 backdrop-blur border-b border-cream/10' : 'bg-transparent'
       }`}
     >
+      {/* Contact strip — collapses on scroll so the sticky bar stays compact */}
+      <div
+        className={`hidden lg:block overflow-hidden border-b border-cream/10 bg-ink-950 transition-all duration-300 ${
+          solid ? 'max-h-0 opacity-0' : 'max-h-12 opacity-100'
+        }`}
+        aria-hidden={solid}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-2.5 sm:px-6 lg:px-8">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-cream/50">
+            {t.topbar.tagline}
+          </p>
+          <div className="flex items-center gap-6">
+            <a
+              href={`tel:${PRIMARY.phoneHref}`}
+              dir="ltr"
+              className="inline-flex items-center gap-2 text-[12px] font-semibold text-cream/80 transition-colors hover:text-rust-300"
+            >
+              <Phone size={12} aria-hidden="true" />
+              {PRIMARY.phoneDisplay}
+            </a>
+            <a
+              href={`mailto:${SITE.email}`}
+              dir="ltr"
+              className="inline-flex items-center gap-2 text-[12px] font-semibold text-cream/80 transition-colors hover:text-rust-300"
+            >
+              <Mail size={12} aria-hidden="true" />
+              {SITE.email}
+            </a>
+            <a
+              href={`https://wa.me/${PRIMARY.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[12px] font-semibold text-cream/80 transition-colors hover:text-rust-300"
+            >
+              <MessageCircle size={12} aria-hidden="true" />
+              {t.branches.whatsapp}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <nav aria-label={t.nav.home} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between gap-4 lg:h-24">
           {/* Brand — the lockup already carries the name in English and Arabic */}
@@ -86,17 +128,8 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Right cluster */}
+          {/* Right cluster — the phone lives in the contact strip above */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href={`tel:${PRIMARY.phoneHref}`}
-              className="hidden 2xl:inline-flex items-center gap-2 whitespace-nowrap text-[13px] font-semibold text-cream hover:text-rust-300 transition-colors"
-              dir="ltr"
-            >
-              <Phone size={14} aria-hidden="true" />
-              {PRIMARY.phoneDisplay}
-            </a>
-
             <LanguageToggle tone="light" />
 
             <button
