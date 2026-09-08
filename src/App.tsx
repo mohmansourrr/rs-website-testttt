@@ -3,6 +3,7 @@ import { LanguageProvider, useLang } from './i18n/LanguageContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
+import VideoTour from './components/VideoTour'
 import About from './components/About'
 import Products from './components/Products'
 import Finishes from './components/Finishes'
@@ -55,6 +56,7 @@ function Site() {
       <main id="main">
         <Hero />
         <Stats />
+        <VideoTour />
         <About />
         <Products />
         <Finishes />
