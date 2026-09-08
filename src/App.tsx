@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { LanguageProvider, useLang } from './i18n/LanguageContext'
+import type { Lang } from './i18n/translations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
@@ -70,9 +71,9 @@ function Site() {
   )
 }
 
-export default function App() {
+export default function App({ initialLang }: { initialLang?: Lang }) {
   return (
-    <LanguageProvider>
+    <LanguageProvider initialLang={initialLang}>
       <Site />
     </LanguageProvider>
   )

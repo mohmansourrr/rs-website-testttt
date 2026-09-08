@@ -42,10 +42,35 @@ function detectLang(): Lang {
   return candidates.some((l) => l.toLowerCase().startsWith('ar')) ? 'ar' : 'en'
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(detectLang)
+export function LanguageProvider({
+  children,
+  initialLang,
+}: {
+  children: ReactNode
+  /**
+   * Fixes the starting language instead of detecting it. Set when the page was
+   * pre-rendered, so the first client render matches the served HTML exactly
+   * and hydration does not tear.
+   */
+  initialLang?: Lang
+}) {
+  const [lang, setLangState] = useState<Lang>(() => initialLang ?? detectLang())
 
   const dir = translations[lang].meta.dir
+
+  /**
+   * On a pre-rendered English page, apply the visitor's own language once
+   * hydration has finished. Doing it in an effect rather than during the first
+   * render keeps the markup identical to what was served. The Arabic page is
+   * left alone: arriving there is already an explicit choice.
+   */
+  useEffect(() => {
+    if (initialLang !== 'en') return
+    const preferred = detectLang()
+    if (preferred !== 'en') setLangState(preferred)
+    /* Runs once, on mount. */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   /* Keep <html lang> and <html dir> in sync for screen readers and RTL layout */
   useEffect(() => {
