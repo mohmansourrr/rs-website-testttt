@@ -3,6 +3,22 @@ import { useLang } from '../i18n/LanguageContext'
 import { SITE } from '../data/site'
 import Logo from './Logo'
 
+/** X logo — lucide still ships the old Twitter bird, which is off-brand now. */
+function XLogo({ size = 15, className }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
+
 export default function Footer() {
   const { t } = useLang()
   const year = new Date().getFullYear()
@@ -23,6 +39,7 @@ export default function Footer() {
     { Icon: Facebook, href: SITE.social.facebook, label: 'Facebook' },
     { Icon: Instagram, href: SITE.social.instagram, label: 'Instagram' },
     { Icon: Linkedin, href: SITE.social.linkedin, label: 'LinkedIn' },
+    { Icon: XLogo, href: SITE.social.x, label: 'X' },
   ]
 
   return (

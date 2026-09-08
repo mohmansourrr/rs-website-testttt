@@ -25,10 +25,14 @@ export const SITE = {
     },
   ],
   social: {
-    facebook: '#',
-    instagram: '#',
-    linkedin: '#',
+    facebook: 'https://www.facebook.com/people/Elradwansteel/100070076870138/',
+    instagram: 'https://www.instagram.com/elradwansteel10',
+    linkedin: 'https://www.linkedin.com/company/r-s-for-stainless-industrial-coo/',
+    x: 'https://x.com/rsstainless',
   },
+  /** Sales line that every website enquiry is routed to. */
+  enquiryWhatsapp: '201065646669',
+  enquiryPhoneDisplay: '0106 564 6669',
 } as const
 
 /** Primary number = head office & factory (6th of October). */
