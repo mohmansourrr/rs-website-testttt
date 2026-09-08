@@ -1,7 +1,7 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import { Send, CheckCircle2, Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
-import { SITE, PRIMARY } from '../data/site'
+import { SITE } from '../data/site'
 
 interface FormState {
   name: string
@@ -25,15 +25,39 @@ export default function Contact() {
     (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
       setForm((f) => ({ ...f, [field]: e.target.value }))
 
+  /**
+   * Enquiries are delivered over WhatsApp: the form composes the message and
+   * hands it to WhatsApp with every field filled in, so the sender only has to
+   * press Send. No backend and no mail service to keep alive, and the reply
+   * happens in the channel this trade already runs on.
+   */
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
     setSending(true)
-    /* TODO: connect to an email service (EmailJS / Formspree) or a backend endpoint. */
-    window.setTimeout(() => {
-      setSending(false)
-      setSent(true)
-      setForm(EMPTY)
-    }, 900)
+
+    const lines = [
+      t.contact.waHeader,
+      '',
+      `${t.contact.name}: ${form.name}`,
+      ...(form.company ? [`${t.contact.company}: ${form.company}`] : []),
+      `${t.contact.email}: ${form.email}`,
+      `${t.contact.phone}: ${form.phone}`,
+      ...(form.product ? [`${t.contact.product}: ${form.product}`] : []),
+      '',
+      `${t.contact.message}:`,
+      form.message,
+    ]
+
+    const url = `https://wa.me/${SITE.enquiryWhatsapp}?text=${encodeURIComponent(lines.join('\n'))}`
+
+    /* Opened from the submit gesture, so this is not treated as a popup.
+       If a blocker stops it anyway, navigate in place instead. */
+    const opened = window.open(url, '_blank', 'noopener,noreferrer')
+    if (!opened) window.location.href = url
+
+    setSending(false)
+    setSent(true)
+    setForm(EMPTY)
   }
 
   return (
@@ -232,7 +256,7 @@ export default function Contact() {
             </div>
 
             <a
-              href={`https://wa.me/${PRIMARY.whatsapp}`}
+              href={`https://wa.me/${SITE.enquiryWhatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-rust-600 p-6 hover:bg-rust-700 transition-colors"
