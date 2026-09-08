@@ -36,7 +36,8 @@ export default function Logo({
       width={830}
       height={198}
       loading={priority ? 'eager' : 'lazy'}
-      fetchPriority={priority ? 'high' : 'auto'}
+      /* Lowercase: React 18 does not recognise the camelCase form and drops it. */
+      {...{ fetchpriority: priority ? 'high' : 'auto' }}
       className={`${className} w-auto object-contain`}
       onError={() => setFailed(true)}
     />

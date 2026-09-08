@@ -19,7 +19,8 @@ export default function Hero() {
         src={asset('images/factory-line.webp')}
         alt=""
         aria-hidden="true"
-        fetchPriority="high"
+        /* Lowercase: React 18 does not recognise the camelCase form. */
+        {...{ fetchpriority: 'high' }}
         className="absolute inset-0 h-full w-full object-cover opacity-[0.28]"
       />
       <div
