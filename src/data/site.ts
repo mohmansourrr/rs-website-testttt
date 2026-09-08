@@ -36,7 +36,7 @@ export const SITE = {
    * public by design: it only allows posting to that one inbox.
    * Empty means the form falls back to handing the enquiry to WhatsApp.
    */
-  formAccessKey: '',
+  formAccessKey: '9e9d2deb-9c2b-4216-b8d8-34a8bc304df9',
   /** Sales line that every website enquiry is routed to. */
   enquiryWhatsapp: '201065646669',
   enquiryPhoneDisplay: '0106 564 6669',
