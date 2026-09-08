@@ -34,6 +34,9 @@ export const SITE = {
 /** Primary number = head office & factory (6th of October). */
 export const PRIMARY = SITE.branches[0]
 
+/** YouTube id for the factory video (https://youtu.be/eFYI73XWoeM). */
+export const VIDEO_ID = 'eFYI73XWoeM'
+
 /** Vite base path, so assets resolve correctly on GitHub Pages. */
 export const asset = (file: string) =>
   `${import.meta.env.BASE_URL}${file.replace(/^\//, '')}`
