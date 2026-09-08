@@ -3,5 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/rs-website-testttt/',
+  /* Served from the root of rsstainless.com, not a repo subfolder. */
+  base: '/',
 })
