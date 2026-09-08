@@ -30,6 +30,13 @@ export const SITE = {
     linkedin: 'https://www.linkedin.com/company/r-s-for-stainless-industrial-coo/',
     x: 'https://x.com/rsstainless',
   },
+  /**
+   * Web3Forms access key. Get one free at https://web3forms.com — enter the
+   * address enquiries should land in and the key is emailed back. The key is
+   * public by design: it only allows posting to that one inbox.
+   * Empty means the form falls back to handing the enquiry to WhatsApp.
+   */
+  formAccessKey: '',
   /** Sales line that every website enquiry is routed to. */
   enquiryWhatsapp: '201065646669',
   enquiryPhoneDisplay: '0106 564 6669',
