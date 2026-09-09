@@ -7,7 +7,8 @@ export default function Stats() {
   return (
     <section className="bg-ink pb-16 sm:pb-20" aria-label={t.stats.label}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        {/* auto-rows-fr keeps both mobile rows level when a label wraps to two lines */}
+        <ul className="grid grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-3 sm:gap-4">
           {t.stats.items.map((s, i) => (
             <li
               key={s.label}

@@ -42,7 +42,7 @@ const en = {
     label: 'RS for Stainless Industrial Co. at a glance',
     items: [
       { value: '8', label: 'Product Lines' },
-      { value: '9+', label: 'Steel Grades' },
+      { value: '9+', label: 'Stainless Steel Grades' },
       { value: '3', label: 'Branches' },
       { value: '8,000+', label: 'Clients' },
     ],
@@ -361,7 +361,7 @@ const ar: Translation = {
     label: 'أر.أس لصناعه الاستانلس في لمحة',
     items: [
       { value: '٨', label: 'خطوط إنتاج' },
-      { value: '+٩', label: 'درجات الاستانلس' },
+      { value: '+٩', label: 'درجات الاستانلس ستيل' },
       { value: '٣', label: 'فروع' },
       { value: '+٨٠٠٠', label: 'عميل' },
     ],
