@@ -54,6 +54,9 @@ const en = {
     p1: 'RS for Stainless Industrial Co. is a stainless steel processing and service center based in Egypt, specializing in the processing, finishing, and supply of stainless steel.',
     p2: 'We provide stainless steel sheets, coils, pipes, bars, tubes, and angles for manufacturers, fabricators, contractors, distributors, and industrial buyers.',
     p3: 'Founded in 2007, RS for Stainless Industrial Co. has grown into a team of 100+ specialists across three branches in the Greater Cairo region. Our focus is on delivering consistent dimensions, surface finishes, and material quality — helping our customers receive the right product, ready for their specific application.',
+    /* The company traded under the old name for years, so customers still
+       search for it. Saying so here is what lets them find this page. */
+    formerName: 'Formerly known as El Radwan Steel — the same company, the same team, under a new name.',
     servicesTitle: 'Our Core Services',
     services: ['Cutting', 'Slitting', 'Polishing', 'Finishing', 'Supply'],
     cta: 'Work With Us',
@@ -373,6 +376,7 @@ const ar: Translation = {
     p1: 'أر.أس لصناعه الاستانلس هو مركز متخصص في معالجة وتجهيز وتوريد الاستانلس ستيل في مصر، حيث نختص في عمليات المعالجة، والتشطيب، والتوريد لمختلف الاستخدامات.',
     p2: 'نوفر ألواح ولفائف الاستانلس ستيل، والمواسير، والقضبان، والأنابيب، والزوايا، لخدمة المصنّعين، والمقاولين، وشركات التصنيع، والموزعين، والمشترين في القطاع الصناعي.',
     p3: 'تأسست أر.أس لصناعه الاستانلس عام ٢٠٠٧، ونمت لتصبح فريقًا يضم أكثر من ١٠٠ متخصص موزعين على ثلاثة فروع في منطقة القاهرة الكبرى. نركز على تقديم منتجات تتميز بثبات الأبعاد، وجودة الأسطح، وجودة الخامات، بما يضمن حصول عملائنا على المنتج المناسب والجاهز للاستخدام وفقًا لمتطلبات كل تطبيق.',
+    formerName: 'المعروفة سابقًا باسم الرضوان ستيل — نفس الشركة ونفس الفريق باسم جديد.',
     servicesTitle: 'خدماتنا الأساسية',
     services: ['التقطيع', 'القص الطولي', 'التلميع', 'التشطيب', 'التوريد'],
     cta: 'تعاون معنا',

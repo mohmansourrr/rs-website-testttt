@@ -28,6 +28,11 @@ export default function About() {
             <p className="body-text mb-5">{t.about.p2}</p>
             <p className="body-text">{t.about.p3}</p>
 
+            {/* Logical border/padding so the rule sits on the reading edge in both scripts */}
+            <p className="mt-7 border-s-2 border-rust-500 ps-4 text-[14px] font-semibold text-ink/60">
+              {t.about.formerName}
+            </p>
+
             {/* Plant photography */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
               <Photo
