@@ -78,9 +78,9 @@ const en = {
       {
         name: 'Stainless Steel Sheets & Coils',
         desc: 'Cold and hot rolled, in all standard and custom sizes.',
-        grades: ['201', '304', '304L', '309', '310', '316', '316L', '410', '430'],
+        grades: ['201', '304', '304L', '309', '310', '316', '316L', '410', '430', '441'],
         specs: [
-          { label: 'Grade', value: '201, 304, 304L, 309, 310, 316, 316L, 410, 430' },
+          { label: 'Grade', value: '201, 304, 304L, 309, 310, 316, 316L, 410, 430, 441' },
           { label: 'Finish', value: '2B, BA, No.4, No.8 Mirror (Cold Rolled) · No.1 (Hot Rolled)' },
           { label: 'Thickness', value: '0.4 – 20.0 mm' },
           { label: 'Standard Sizes', value: '1500×3000 mm · 1250×2500 mm · 1000×2000 mm' },
@@ -398,9 +398,9 @@ const ar: Translation = {
       {
         name: 'ألواح ولفائف الاستانلس ستيل',
         desc: 'مدرفلة على البارد والساخن، بجميع المقاسات القياسية وحسب الطلب.',
-        grades: ['٢٠١', '٣٠٤', '٣٠٤L', '٣٠٩', '٣١٠', '٣١٦', '٣١٦L', '٤١٠', '٤٣٠'],
+        grades: ['٢٠١', '٣٠٤', '٣٠٤L', '٣٠٩', '٣١٠', '٣١٦', '٣١٦L', '٤١٠', '٤٣٠', '٤٤١'],
         specs: [
-          { label: 'الدرجة', value: '٢٠١، ٣٠٤، ٣٠٤L، ٣٠٩، ٣١٠، ٣١٦، ٣١٦L، ٤١٠، ٤٣٠' },
+          { label: 'الدرجة', value: '٢٠١، ٣٠٤، ٣٠٤L، ٣٠٩، ٣١٠، ٣١٦، ٣١٦L، ٤١٠، ٤٣٠، ٤٤١' },
           { label: 'التشطيب', value: '2B، BA، No.4، No.8 Mirror (مدرفل على البارد) · No.1 (مدرفل على الساخن)' },
           { label: 'السُمك', value: '٠.٤ – ٢٠.٠ مم' },
           { label: 'المقاسات القياسية', value: '١٥٠٠×٣٠٠٠ مم · ١٢٥٠×٢٥٠٠ مم · ١٠٠٠×٢٠٠٠ مم' },
