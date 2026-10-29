@@ -33,19 +33,14 @@ export default function About() {
               {t.about.formerName}
             </p>
 
-            {/* Plant photography */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
+            {/* Plant photography — one wide frame, so 16:9 rather than the
+                4:3 the pair used side by side */}
+            <div className="mt-10">
               <Photo
                 name="team"
                 alt={t.images.team}
                 caption={t.captions.team}
-                ratio="aspect-[4/3]"
-              />
-              <Photo
-                name="plant"
-                alt={t.images.plant}
-                caption={t.captions.plant}
-                ratio="aspect-[4/3]"
+                ratio="aspect-[16/9]"
               />
             </div>
 
