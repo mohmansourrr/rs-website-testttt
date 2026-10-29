@@ -131,7 +131,6 @@ const en = {
     processing: [
       'Cutting',
       'Slitting',
-      'Edge Treatment',
       'Polishing (8K / 6K)',
       'No.4',
       'Scotch Brite',
@@ -156,7 +155,6 @@ const en = {
 
   captions: {
     team: 'Our team at the 6th of October factory',
-    plant: 'Cut-to-length line, 6th of October',
     slitting: 'Coil slitting to customer width',
     polishing: 'Polishing line — 8K and 6K mirror finishes',
     inspection: 'Thickness verified on every production run',
@@ -165,7 +163,6 @@ const en = {
   images: {
     factoryLine: 'RS for Stainless Industrial Co. production line with stainless steel coils',
     team: 'The RS team at the 6th of October factory',
-    plant: 'Cut-to-length line inside the RS plant',
     slitting: 'Stainless steel coil being slit into strips on the slitting line',
     polishing: 'Polishing line producing 8K and 6K mirror finishes',
     inspection: 'Technician measuring sheet thickness with a caliper',
@@ -451,7 +448,6 @@ const ar: Translation = {
     processing: [
       'التقطيع',
       'القص الطولي',
-      'معالجة الحواف',
       'تلميع (8K / 6K)',
       'صنفرة',
       'سكوتش برايت',
@@ -476,7 +472,6 @@ const ar: Translation = {
 
   captions: {
     team: 'فريقنا في مصنع ٦ أكتوبر',
-    plant: 'خط القص العرضي، ٦ أكتوبر',
     slitting: 'القص الطولي للفائف حسب عرض العميل',
     polishing: 'خط التلميع — تشطيبات مرآة 8K و 6K',
     inspection: 'التحقق من السُمك في كل تشغيلة إنتاج',
@@ -485,7 +480,6 @@ const ar: Translation = {
   images: {
     factoryLine: 'خط الإنتاج في أر.أس لصناعه الاستانلس مع لفائف الاستانلس ستيل',
     team: 'فريق أر.أس في مصنع ٦ أكتوبر',
-    plant: 'خط القص العرضي داخل مصنع أر.أس',
     slitting: 'لفائف الاستانلس ستيل أثناء القص الطولي إلى شرائح',
     polishing: 'خط التلميع لإنتاج تشطيبات مرآة 8K و 6K',
     inspection: 'فني يقيس سُمك اللوح باستخدام الوردية',
